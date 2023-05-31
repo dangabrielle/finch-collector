@@ -14,7 +14,7 @@ def about(request):
 # Add new view
 
 
-def cats_index(request):
+def finch_index(request):
     # We pass data to a template very much like we did in Express!
     finches = Finch.objects.all()
     return render(request, 'finches/index.html', {
