@@ -20,3 +20,8 @@ def finch_index(request):
     return render(request, 'finches/index.html', {
         'finches': finches
     })
+
+
+def finch_detail(request, finch_id):
+    finch = Finch.objects.get(id=finch_id)
+    return render(request, 'finches/details.html', {'finch': finch})
