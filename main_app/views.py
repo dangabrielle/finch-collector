@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Finch
-
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # Create your views here.
 
 
@@ -25,3 +25,20 @@ def finch_index(request):
 def finch_detail(request, finch_id):
     finch = Finch.objects.get(id=finch_id)
     return render(request, 'finches/details.html', {'finch': finch})
+
+
+class FinchCreate(CreateView):
+    model = Finch
+    fields = ['name', 'breed', 'description', 'age']
+    # success_url = '/cats/' not the preferred way. refer to models
+
+
+class FinchUpdate(UpdateView):
+    model = Finch
+    # Let's disallow the renaming of a cat by excluding the name field!
+    fields = ['description', 'age']
+
+
+class FinchDelete(DeleteView):
+    model = Finch
+    success_url = '/finches/'
