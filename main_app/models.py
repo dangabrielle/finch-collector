@@ -23,7 +23,7 @@ class Feeding(models.Model):
         ('L', 'Lunch'),
         ('D', 'Dinner')
     )
-    date = models.DateField()
+    date = models.DateField('feeding date')
     meal = models.CharField(max_length=1, choices=MEALS, default=MEALS[0][0])
     # Create a cat_id FK
     finch = models.ForeignKey(Finch, on_delete=models.CASCADE)
